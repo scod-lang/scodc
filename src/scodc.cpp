@@ -170,7 +170,8 @@ int main( int argc, const char* argv[] )
     pr.setInput< libpass::LoadFilePass >( files.front() );
 
     pm.setDefaultResult( pr );
-    pm.setDefaultPass< libscod::SourceToCstPass >();
+    // pm.setDefaultPass< libscod::SourceToCstPass >();
+    pm.setDefaultPass< libscod::CstEmitPass >();
 
     // set pass-specific configurations
 
