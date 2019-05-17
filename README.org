@@ -21,6 +21,8 @@
 #   You should have received a copy of the GNU General Public License
 #   along with scodc. If not, see <http://www.gnu.org/licenses/>.
 # 
+[[https://github.com/scod-lang/scod-lang.logo/raw/master/etc/headline.png]]
+
 
 * scodc
 
