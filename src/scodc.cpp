@@ -170,8 +170,7 @@ int main( int argc, const char* argv[] )
     pr.setInput< libpass::LoadFilePass >( files.front() );
 
     pm.setDefaultResult( pr );
-    // pm.setDefaultPass< libscod::SourceToCstPass >();
-    pm.setDefaultPass< libscod::CstEmitPass >();
+    pm.setDefaultPass< libscod::AstToCasmPass >();
 
     // set pass-specific configurations
 
@@ -185,12 +184,19 @@ int main( int argc, const char* argv[] )
         }
     } );
 
-    // pm.set< libscod::CstEmitPass >( [ & ]( libscod::CstEmitPass& pass ) {
-    //     if( outputPath.size() != 0 )
-    //     {
-    //         pass.setOutputPath( outputPath.front() );
-    //     }
-    // } );
+    pm.set< libscod::AstDumpPass >( [ & ]( libscod::AstDumpPass& pass ) {
+        if( outputPath.size() != 0 )
+        {
+            pass.setOutputPath( outputPath.front() );
+        }
+    } );
+
+    pm.set< libscod::AstToCasmPass >( [ & ]( libscod::AstToCasmPass& pass ) {
+        if( outputPath.size() != 0 )
+        {
+            pass.setOutputPath( outputPath.front() );
+        }
+    } );
 
     // run pass pipeline
 
